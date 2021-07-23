@@ -1,14 +1,20 @@
 const express = require("express");
 
-const meanGameController=require("../controller/games.controller");
+const studentController=require("../controller/student.controller");
+const courseController=require("../controller/course.controller");
  
 const router= express.Router();
 
-router.route("/getGamesWithCount").get(meanGameController.getWithCount)
+router.route("/getStudentsWithCount").get(studentController.getWithCount)
 
-router.route("/games").get(meanGameController.getAll)
+router.route("/students").get(studentController.getAll)
 
-router.route("/games/:gameId").get(meanGameController.getOne) 
+router.route("/students/:studentId").get(studentController.getOne) 
  
+router.route("/students/:studentId/courses").get(courseController.courseGetAll) 
+
+router.route("/students/:studentId/courses/:courseId").get(courseController.courseGetOne) 
 
 module.exports = router;
+
+ 

@@ -4,7 +4,7 @@ require("./api/data/db");
 const router=require("./api/routes");
 const app = express();
 
-//var conn=require("./api/data/dbconnection.js");
+ 
 
 app.use(function(req, res, next){
     console.log(req.url,req.ip,req.method,req.time);

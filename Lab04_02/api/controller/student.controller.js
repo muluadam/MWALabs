@@ -1,10 +1,27 @@
 const express = require("express");
 const mongoose = require("mongoose");
-const Game = mongoose.model("Game");
+
+const Student = mongoose.model("Student");
 module.exports.getAll = function (req, res) {
-    Game.find().exec(function (err, games) {
-     res.status(200).json(games);
+
+    var offset = 0;
+    var count = 5;
+    if (req.query && req.query.offset) {
+        offset = parseInt(req.query.offset, 10);
+    }
+    if (req.query && req.query.count) {
+        if (parseInt(req.query.count) <= 7) {
+            count = parseInt(req.query.count);
+        }
+    }
+
+    Student.find().limit(count).skip(offset).exec(function (err, student) {
+        console.log("Student game=" + student);
+        res.status(200).json(student);
     });
+    // Student.find().exec(function (err, res) {
+    //  res.status(200).json(res);
+    // });
 
 }
 
@@ -21,20 +38,21 @@ module.exports.getWithCount = function (req, res) {
         }
     }
 
-    Game.find().limit(count).skip(offset).exec(function (err, game) {
-        console.log("Foound game=" + game);
-        res.status(200).json(game);
+    Student.find().limit(count).skip(offset).exec(function (err, student) {
+        console.log("Student game=" + student);
+        res.status(200).json(student);
     });
 }
 
 module.exports.getOne = function (req, res) {
-    const gameId = req.params.gameId;
-    console.log("gameId=" + gameId)
+    const studentId = req.params.studentId;
+    console.log("gameId=" + studentId)
   
-    Game.findById(gameId).exec(function(err, game) {
-        res.status(200).json(game);
+    Student.findById(studentId).exec(function(err, student) {
+        res.status(200).json(student);
         });
 
 }
 
+ 
  

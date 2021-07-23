@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 require("dotenv").config();
-require("./games-student");
+require("./student-model");
 
 const dbName = "StudentDB";
 
