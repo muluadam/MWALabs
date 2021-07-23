@@ -1,0 +1,10 @@
+
+1- Make sure you have mongoDB installed and running on your system. Create a SchoolDB with a Students collection. Then add the following documents:
+
+John, 3.3
+James, 2.5
+Jasmin, 3.8
+
+2- Export the SchoolDB to a json file as a pretty array and upload that.
+
+3- Import the games DB found in the resources folder. Then write a NodeJS program to display 5 games from database or as many as the user specifies but not exceeding 7. (this is your mean games project).
