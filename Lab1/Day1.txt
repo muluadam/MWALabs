@@ -1,0 +1,6 @@
+This is the assignment for today.
+
+1- Install all the necessary components for MEAN stack development. Similar to what I did in class. Submit a screenshot of your system showing the version of Node and npm.
+
+2- Write a non-blocking modular nodeJS program to compute the Fibonacci of two numbers 30 and -10. Submit your code or a link to your personal GitHub where you have your code. In your Fibonacci assume the Fibonacci of negative numbers is zero eg. Fib(-10)=0.
+Additional resources for assignment
