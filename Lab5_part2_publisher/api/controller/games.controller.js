@@ -120,17 +120,14 @@ module.exports.gamesPartialUpdateOne = function (req, res) {
         if (response.status !== 204) {
             res.status(response.status).json(response.message)
         } else {
-            
-            if(!req.body.title  )game.title = req.body.title;
-            if(!req.body.year  )game.year = parseInt(req.body.year);
-            if(!req.body.price  )game.price = parseFloat(req.body.price);
-            if(!req.body.designer  )game.designer = req.body.designer;
-            if(!req.body.minPlayers  )game.minPlayers = parseInt(req.body.minPlayers);
-            if(!req.body.maxPlayers  )game.maxPlayers = parseInt(req.body.maxPlayers);
-            if(!req.body.rate  )game.rate = parseFloat(req.body.rate); 
-            if(!req.body.minAge  ) game.minAge = parseInt(req.body.minAge);
-
-         {game.save(function (err, updatedGame) {
+            game.title = req.body.title;
+            game.year = parseInt(req.body.year);
+            game.price = parseFloat(req.body.price);
+            game.designer = req.body.designer;
+            game.minPlayers = parseInt(req.body.minPlayers);
+            game.maxPlayers = parseInt(req.body.maxPlayers);
+            game.rate = parseFloat(req.body.rate); game.minAge = parseInt(req.body.minAge);
+            game.save(function (err, updatedGame) {
                 if (err) {
 
 

@@ -1,0 +1,17 @@
+{
+  "name": "Lab5_part2_publisher",
+  "version": "1.0.0",
+  "description": "Lab 5 Day 5 , MWA",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Muluadam T Akalu",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.13.3"
+  }
+}
