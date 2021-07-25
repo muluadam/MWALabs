@@ -7,6 +7,35 @@ module.exports.getAll = function (req, res) {
         res.status(200).json(games);
     });
 
+ 
+
+        let offset = 0;
+        let count = 5;
+        const maxCount=7;
+        if (req.query && req.query.offset) {
+            offset = parseInt(req.query.offset, 10);
+        }
+        if (req.query && req.query.count) {
+            if (parseInt(req.query.count) <= 7) {
+                count = parseInt(req.query.count);
+            }
+        }
+        if(isNaN(count)||isNaN(offset)){
+            res.status(400).json({message:"QureyString offset and cournt Problem"});
+            return;
+        }
+    if(count>maxCount){
+        res.status(400).json({message:"Requesting more than your limit"});
+            return;
+    }
+        Game.find().limit(count).skip(offset).exec(function (err, game) {
+            console.log("Foound game=" + game);
+            res.status(200).json(game);
+        });
+ 
+    
+
+
 }
 
 module.exports.getWithCount = function (req, res) {
@@ -50,10 +79,13 @@ module.exports.gamesAddOne = function (req, res) {
         title: req.body.title,
         year: parseInt(req.body.year),
         price: parseFloat(req.body.price),
-        designer: req.body.designer,
+       
         minPlayers: parseInt(req.body.minPlayers),
         maxPlayers: parseInt(req.body.maxPlayers),
-        rate: parseFloat(req.body.rate)
+        rate: parseFloat(req.body.rate),
+        minAge:parseInt(req.body.minAge),
+        publisher:{},
+        designers:[req.body.designer]
     },
         function (err, game) {
             if (err) {

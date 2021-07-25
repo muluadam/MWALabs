@@ -4,14 +4,27 @@ const Game = mongoose.model("Game");
 
 module.exports.publisherGetAll = function (req, res) {
     console.log("publisherGetAll Get All");
-    const gameId = req.params.gameId;
+    const gameId = req.params.gameId; 
+    console.log("gameId=" + gameId)
+     
+ 
+    // Game.findById(gameId)
+    //     .select('publisher')
+    //     .exec(function (err, game) {
+    //         res.status(200).json(game);
+    //     });
+
+
     Game.findById(gameId).select("publisher").exec(function (err, game) {
         const response = {
             status: 200,
-            message: []
+            message:{}
         };
+
+
+
         if (err) {
-            console.log("Error finding game");
+          console.log("Erro 500 game");
             response.status = 500;
             response.message = err;
         }
@@ -20,9 +33,9 @@ module.exports.publisherGetAll = function (req, res) {
             response.status = 404;
             response.message = { message: "Game not found" };
         } else {
-            console.log("Error finding game");
+            console.log("Game Found game");
 
-            response.message = game.publisher ? game.publisher : [];
+            response.message = game ? game : [];
         }
         res.status(response.status).json(response.message);
 
@@ -38,15 +51,17 @@ module.exports.publisherGetAll = function (req, res) {
 module.exports.publisherGetOne = function (req, res) {
     const gameId = req.params.gameId;
     console.log("gameId=" + gameId)
-
-    Game.findById(gameId).exec(function (err, game) {
-        res.status(200).json(game);
-    });
+    console.log("publisehrIdId=" + req.params.publisherId);
+ 
+    Game.findById(gameId)
+        .select('publisher')
+        .exec(function (err, game) {
+            res.status(200).json(game);
+        });
 
 }
 
 const _addPublisher = function (req, res, game) {
-
     game.publisher.name = req.body.name;
     game.publisher.location.coordinates = [
         parseFloat(req.body.lng),
@@ -57,7 +72,6 @@ const _addPublisher = function (req, res, game) {
             status: 200,
             message: []
         };
-
         if (err) {
             response.status = 500;
             response.message = err;
@@ -66,7 +80,6 @@ const _addPublisher = function (req, res, game) {
             response.message = updatedGame.publisher;
         }
         res.status(response.status).json(response.message);
-
     });
 }
 /**
@@ -76,7 +89,7 @@ const _addPublisher = function (req, res, game) {
  */
 module.exports.publisherAddOne = function (req, res) {
     const gameId = req.params.gameId;
-    console.log("Game Id=" + gameId);
+    console.log("publisherAddOne=" + gameId);
 
     Game.findById(gameId).select("publisher").exec(function (err, game) {
         const response = { status: 200, message: [] };
@@ -101,16 +114,24 @@ module.exports.publisherAddOne = function (req, res) {
 
 }
 const _updatePublisher = function (req, res, game) {
-    game.publisher.name = req.body.name;
-    game.publisher.location.coordinates = [parseFloat(req.body.lng), parseFloat(req.body.lat)];
+    console.log("_updatePublisher")
+    if(req.body.name){
+        game.publisher.name = req.body.name; 
+    }
+    if(req.body.lng){
+        game.publisher.location.coordinates = [parseFloat(req.body.lng), parseFloat(req.body.lat)]; 
+    }
+ 
     game.save(function (err, updateGame) {
+
         const response = { status: 204 };
         if (err) {
-            console.log("Error finding game"); response.status = 500; response.message = err;
+            console.log("Error saving game"); response.status = 500; response.message = err;
         }
         res.status(response.status).json(response.message);
     });
 }
+ 
 
 module.exports.publisherFullUpdateOne = function (req, res) {
     const gameId = req.params.gameId;
@@ -152,11 +173,12 @@ module.exports.publisherPartialUpdateOne = function (req, res) {
             game.designer = req.body.designer;
             game.minPlayers = parseInt(req.body.minPlayers);
             game.maxPlayers = parseInt(req.body.maxPlayers);
-            game.rate = parseFloat(req.body.rate); game.minAge = parseInt(req.body.minAge);
+            game.rate = parseFloat(req.body.rate);
+            game.minAge = parseInt(req.body.minAge);
+            publisher: { }
+
             game.save(function (err, updatedGame) {
                 if (err) {
-
-
                     response.status = 500;
                     response.message = err;
                 }

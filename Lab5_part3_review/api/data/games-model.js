@@ -10,7 +10,9 @@ const reviewSchema= new mongoose.Schema({
         required: true
     },
     date:{
-        type:String
+        type:Date,
+        default:Date.now
+         
     }
 });
 
@@ -52,7 +54,7 @@ const gameSchema= new mongoose.Schema({
     minAge:Number,
     designers:[String],
     publisher:publisherSchema,
-    review:reviewSchema
+    review:{type:[reviewSchema],default:[]}
 });
 
 

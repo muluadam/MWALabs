@@ -23,17 +23,17 @@ router.route("/games/:gameId")
 
 
 router.route("/games/:gameId/publisher")
-    .get(publisherController.publisherGetAll)
+      .get(publisherController.publisherGetAll)
     .put(publisherController.publisherFullUpdateOne)
     .delete(publisherController.publisherDeleteOne)
     .post(publisherController.publisherAddOne);
 
 
-router.route("games/:gameId/publisher/:publisherId") 
-    .get(publisherController.publisherGetOne)
-    .put(publisherController.publisherFullUpdateOne)
-    .patch(publisherController.publisherPartialUpdateOne)
-    .delete(publisherController.publisherDeleteOne);
+// router.route("/games/:gameId/publisher/:publisherId") 
+//     .get(publisherController.publisherGetOne)
+//     .put(publisherController.publisherFullUpdateOne)
+//     .patch(publisherController.publisherPartialUpdateOne)
+//     .delete(publisherController.publisherDeleteOne);
 
 
 

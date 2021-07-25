@@ -140,7 +140,6 @@ module.exports.studentsPartialUpdateOne = function (req, res) {
          
             student.save(function (err, updatedStudent) {
                 if (err) {
-
                     response.status = 500;
                     response.message = err;
                 }

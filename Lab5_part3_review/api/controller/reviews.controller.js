@@ -5,15 +5,15 @@ const Game = mongoose.model("Game");
 module.exports.reviewsGetAll = function (req, res) {
     console.log("reviewsGetAll Get All");
     const gameId = req.params.gameId;
-    console.log("GAme Id="+gameId);
-    Game.findById(gameId).exec(function (err, game) {
+    console.log("GAme Id=" + gameId);
+    Game.findById(gameId).select('reviews').exec(function (err, game) {
         const response = {
             status: 200,
-            message: " "
+            message: {}
         };
         if (err) {
             console.log(err);
-            console.log("Error finding game Error");
+            console.log("Error Error");
             response.status = 500;
             conslo
             response.message = err;
@@ -23,44 +23,63 @@ module.exports.reviewsGetAll = function (req, res) {
             response.status = 404;
             response.message = { message: "Game not found" };
         } else {
-            console.log("Looping Error finding game");
-console.log("MSG=="+game.name);
-            response.message = game.review ? game.review : [];
+            console.log("game==" + game);
+            response.message = game.reviews;
         }
-        res.status(response.status).json(response.message);
+        res.status(response.status).json(game);
 
     });
- 
+
 }
 
 
 
- 
+
 
 const _addreviews = function (req, res, game) {
-console.log("Adding review");
-console.log("From Body ",req.body.name);
-console.log("game---", game.review.name);
-    game.reviews.name = req.body.name;
-    game.reviews.review=req.body.review;
-    game.reviews.date=req.body.date;
-   
-    game.save(function (err, updatedGame) {
-        const response = {
-            status: 200,
-            message: []
-        };
+    console.log("Adding review");
+    console.log("From Body ", req.body.name);
+    const newreview = {
+        name: req.body.name,
+        review: req.body.review,
+    }
+    // game.reviews.name = req.body.name;
+    //     game.reviews.review=req.body.review;
+    //     game.reviews.date=req.body.date;
 
-        if (err) {
-            response.status = 500;
-            response.message = err;
-        } else {
-            response.status = 201;
-            response.message = updatedGame.reviews;
-        }
-        res.status(response.status).json(response.message);
+    Game.findOneAndUpdate({ _id: game._id }, {
+        $push: { review: newreview },
+        new: true,
+        upsert: true,
+        rawResult: true,
+        useFindAndModify:true
+    },
+        function (error, success) {
+            if (error) {
+                console.log(error);
+                res.status(500).json(error);
+            } else {
+                console.log(success);
+                res.status(200).json(success);
+            }
+        });
 
-    });
+    // game.save(function (err, updatedGame) {
+    //     const response = {
+    //         status: 200,
+    //         message: []
+    //     };
+
+    //     if (err) {
+    //         response.status = 500;
+    //         response.message = err;
+    //     } else {
+    //         response.status = 201;
+    //         response.message = updatedGame.reviews;
+    //     }
+    //     res.status(response.status).json(response.message);
+
+    // });
 }
 /**
  *   
@@ -94,11 +113,11 @@ module.exports.reviewsAddOne = function (req, res) {
 
 }
 const _updatereviews = function (req, res, game) {
-  
+
     game.review.name = req.body.name;
-    game.review.review=req.body.review;
-    game.review.date=req.body.date;
-   
+    game.review.review = req.body.review;
+    game.review.date = req.body.date;
+
     game.save(function (err, updateGame) {
         const response = { status: 204 };
         if (err) {
@@ -143,9 +162,9 @@ module.exports.reviewsPartialUpdateOne = function (req, res) {
             res.status(response.status).json(response.message)
         } else {
             game.review.name = req.body.name;
-            game.review.review=req.body.review;
-            game.review.date=req.body.date;
-           
+            game.review.review = req.body.review;
+            game.review.date = req.body.date;
+
             game.save(function (err, updatedGame) {
                 if (err) {
 
