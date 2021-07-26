@@ -97,7 +97,7 @@ module.exports.reviewsAddOne = function (req, res) {
             response.status = 500;
             response.message = err;
         } else if (!game) {
-            console.log("Game id not found in database", id);
+            console.log("Game id not found in database", gameId);
             response.status = 404;
             response.message = { "message": "Game ID not found" + gameId };
         }

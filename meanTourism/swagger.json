@@ -1,0 +1,111 @@
+{
+    "swagger": "2.0",
+    "info": {
+      "title": "Mean tourist API Documentation  ",
+      "version": "1.0.0"
+    },
+    "schemes": [
+      "http",
+      "https"
+    ],
+    "consumes": [
+      "application/json"
+    ],
+    "produces": [
+      "application/json"
+    ],
+    "paths": {
+      "/api/sites": {
+        "get": {
+          "summary": "GET /sites/",
+          "operationId": "ListFeatures",
+          "responses": {
+            "200": {
+              "description": "The result will be displayed here"
+               
+            }
+          },
+          "tags": [
+            "Generic"
+          ]
+        }
+      },
+      "/sites/{siteId}": {
+        "put": {
+          "summary": "PUT /sites/:siteId",
+          "operationId": "UpdateFeature",
+          "responses": {
+            "200": {
+              "description": ""
+               
+            }
+          },
+          "parameters": [
+            {
+              "name": "name",
+              "in": "body",
+              "required": true
+            },
+            {
+              "name": "name_am",
+              "in": "path",
+              "required": true,
+              "type": "string",
+              "format": "string"
+            },
+            {
+              "name": "category",
+              "in": "body",
+              "required": true
+             
+            }
+          ],
+          "tags": [
+            "Generic"
+          ]
+        }
+      }
+    },
+    "definitions": {
+      "sites": {
+        "type": "object",
+        "properties": {
+          "app_id": {
+            "type": "string",
+            "format": "string"
+          },
+          "args": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "string"
+            }
+          },
+          "enabled": {
+            "type": "boolean",
+            "format": "boolean"
+          },        
+          
+          "updated_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "uuid": {
+            "type": "string",
+            "format": "string"
+          }
+        }
+      },
+      "review": {
+        "type": "string"
+         
+      },
+      "visitors": {
+        "type": "string"
+         
+      }
+  
+ 
+    }
+  }
+  

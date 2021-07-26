@@ -4,6 +4,9 @@ require("./api/data/db");
 const router=require("./api/routes");
 const app = express();
 
+
+
+
 //var conn=require("./api/data/dbconnection.js");
 
 app.use(function(req, res, next){
@@ -24,6 +27,8 @@ app.use(express.urlencoded({extended:true}));
 //   });
 //conn.open();
 //app.use(express.static(path.join(__dirname,"public")));
+// app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+
 
 const server=app.listen(process.env.PORT,function(req, res){
     console.log("Listening to port ",server.address().port);
