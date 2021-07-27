@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .choices{
+padding-left: 50px;
+width:50%;
+        }
+        .card {
+  /* Add shadows to create the "card" effect */
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+}
+
+/* On mouse-over, add a deeper shadow */
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+li {
+    list-style-type: circle;
+}
+
+li li {
+    list-style-type: circle;
+    padding-top: 5px;
+}
+ul{ 
+    padding:5px;
+}
+ul li{
+    padding-top:10px;
+}
+    </style>
+</head>
+<body>
+<h1 style="color:green"> General knowldege Questions</h1>
+<h2 style="color:green"> Accessing REST API with AngularJS </h2>
+    <div  ng-controller="MainController as mainCrtl">
+       
+        <ul class="card">
+             <li class="card" ng-repeat="quiz in mainCrtl.data">{{quiz.question}}
+                 <ul class="choices ">
+                     <li ng-repeat="choice in quiz.incorrect_answers"> {{choice }}</li>
+                     <li  > {{quiz.correct_answer }}</li>
+                     
+                        <input type="checkbox" ng-model="showAnswer"  >Show</input>
+                        <div ng-if="showAnswer">
+                            <h5 style="color:green">{{quiz.correct_answer }}</h5>
+                            </div>
+                      
+                    
+                    
+                 </ul>
+             </li>
+
+        </ul>
+
+    </div>
+
+ 
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular-route.min.js"></script>
+    <script src="app.js"></script>
+    <script src="main/main.controller.js" ></script> 
+
+    <script src="dataFactory/dataFactory.js"></script>
+
+</body>
+</html>
