@@ -9,9 +9,9 @@ function config($routeProvider){
     ).when("/about",
     templateUrl="about/about.html",
     controller="AboutController",
-    controllerAs="aboutCtrl"
+    controllerAs="about"
     
-    );
+    ).otherwise({redirectTo:'/'});;
       
 
 }

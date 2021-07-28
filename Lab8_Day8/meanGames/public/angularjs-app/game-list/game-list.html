@@ -1,0 +1,25 @@
+  
+ <table  >
+  
+   <tr>
+      <td>{{game.title}}</td>
+      <td>{{game.price}}</td>     
+      <td> {{game.price |currency}} </td>
+   </tr>
+  
+    
+   </table>
+
+ <ol>
+    <li   
+    ng-repeat="game in uiGameCrtl.games |orderBy:'title'"
+     > 
+     <span> {{game.title  }} </span>   <span> {{game.price |currency}} </span> 
+     <a  href="/#!/game/{{game._id}}" >View Detail</a>
+   
+   </li>      
+
+</ol>
+
+
+ 

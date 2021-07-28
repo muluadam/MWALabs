@@ -1,0 +1,19 @@
+ 
+ 
+
+<div style="padding: 30px;">
+    
+   <h2 style="color:rgb(12, 92, 23)"> Title: {{oneGameCrtl.data.title}}</h2> 
+    <h6 style="color:blue">Price: {{oneGameCrtl.data.price}}</h6> 
+    <h6 style="color:blue">minPlayers: {{oneGameCrtl.data.minPlayers}}</h6> 
+    <h6 style="color:blue">maxPlayers: {{oneGameCrtl.data.maxPlayers}}</h6>
+    
+    <h6 style="color:blue">Rating:  <span ng-repeat="star in  oneGameCrtl.rating track by $index " >&#9733;</span>{{title}}</h6><br/>
+   
+    <h6 style="color:blue"> 
+         <game-rating  stars="oneGameCrtl.rating">
+
+    </game-rating> </h6><br/>
+   
+</div>
+

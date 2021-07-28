@@ -1,5 +1,24 @@
-<div>
- 
 
-    <p>{{data}}</p>
-</div>
+<h1 style="color:green"> General knowldege Questions</h1>
+<h2 style="color:green"> Accessing REST API with AngularJS </h2>
+    <div  ng-controller="MainController as mainCrtl">
+       
+        <ul class="card">
+             <li class="card" ng-repeat="quiz in mainCrtl.data">{{quiz.question}}
+                 <ul class="choices ">
+                     <li ng-repeat="choice in quiz.incorrect_answers"> {{choice }}</li>
+                     <li  > {{quiz.correct_answer }}</li>
+                     
+                        <input type="checkbox" ng-model="showAnswer"  >Show</input>
+                        <div ng-if="showAnswer">
+                            <h5 style="color:rgb(128, 0, 53)">{{quiz.correct_answer }}</h5>
+                            </div>
+                      
+                    
+                    
+                 </ul>
+             </li>
+
+        </ul>
+
+    </div>

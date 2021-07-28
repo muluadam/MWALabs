@@ -37,6 +37,7 @@ ul li{
     </style>
 </head>
 <body>
+ 
 <h1 style="color:green"> General knowldege Questions</h1>
 <h2 style="color:green"> Accessing REST API with AngularJS </h2>
     <div  ng-controller="MainController as mainCrtl">
@@ -49,7 +50,7 @@ ul li{
                      
                         <input type="checkbox" ng-model="showAnswer"  >Show</input>
                         <div ng-if="showAnswer">
-                            <h5 style="color:green">{{quiz.correct_answer }}</h5>
+                            <h5 style="color:rgb(9, 122, 66)">{{quiz.correct_answer }}</h5>
                             </div>
                       
                     
@@ -60,8 +61,6 @@ ul li{
         </ul>
 
     </div>
-
- 
 
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular-route.min.js"></script>

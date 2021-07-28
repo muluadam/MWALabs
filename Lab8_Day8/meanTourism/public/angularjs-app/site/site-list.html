@@ -1,0 +1,13 @@
+ 
+<h1><span style="color:darkgreen">List of Trourist Attraction sites</span></h1>
+ 
+<ol>
+    <li   
+    ng-repeat="site in siteCrtl.data |orderBy:'name'"
+     > 
+     <h3><span style="color:black"> {{site.name }}({{site.name_am}}) </span>   
+     <a  href="/#!/site/{{site._id}}" >View Detail</a></h3>
+   
+   </li>      
+
+</ol>
