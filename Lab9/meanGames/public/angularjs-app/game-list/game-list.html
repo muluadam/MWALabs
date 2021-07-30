@@ -1,0 +1,102 @@
+<table id="table" class="table display    " style="width:50%">
+   <thead>
+      <tr class="table-primary">
+         <td scope="col">Title</td>
+         <td scope="col">Price</td>
+         <td scope="col"> Edit</td>
+         \ <td scope="col"> Update</td>
+         <td scope="col"> Delete</td>
+      </tr>
+   </thead>
+   <tbody>
+
+      <tr class="   bg-dark" ng-repeat="game in uiGameCrtl.games |orderBy:'title'">
+         <th scope="row">1</th>
+         <td>{{game.title}}</td>
+         <td>{{game.price | currency}}</td>
+         <td> <a href="/#!/game/{{game._id}}">View Detail</a> </td>
+         <td> <a href="/#!/game/edit/{{game._id}}">Edit</a> </td>
+         <td> <a href="/#!/game/delete/{{game._id}}">Delete</a> </td>
+      </tr>
+   </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+<div class="col-sm-8 col-sm-offset-2" style="width: 300px;">
+
+ 
+   <div class="page-header">
+      <h1>Add New Game</h1>
+   </div>   
+   <form name="uiGameCrtl.gameform" ng-submit="uiGameCrtl.submitForm(this)" novalidate>
+      
+     
+      <div class="form-group">
+         <label>Title</label>
+         <input type="text" name="title" class="form-control" ng-model="title" required  
+            ng-maxlength="50">
+         <span style="color: red;"
+            ng-show="uiGameCrtl.gameform.title.$dirty && uiGameCrtl.gameform.title.$invalid">Invalid Title</span>
+      </div>
+
+      <!-- USERNAME -->
+      <div class="form-group">
+         <label>Price</label>
+         <input type="text" name="price" class="form-control" ng-model="price" required pattern="\d*">
+         <span style="color: red;" ng-show="uiGameCrtl.gameform.price.$dirty && uiGameCrtl.gameform.price.$invalid">
+            Invalid Price </span>
+      </div>
+
+      <!-- EMAIL -->
+      <div class="form-group">
+         <label>Year</label>
+         <input type="text" name="year" class="form-control" ng-model="year" pattern="^[0-9]{4}$">
+         <span style="color: red;" ng-show="uiGameCrtl.gameform.year.$dirty && uiGameCrtl.gameform.year.$invalid">
+            Invalid Year</span>
+      </div>
+      <div class="form-group">
+         <label>Rate</label>
+         <input type="text" name="rate" class="form-control" ng-model="rate" pattern="^[1-5]{1}$">
+         <span style="color: red;" ng-show="uiGameCrtl.gameform.rate.$dirty && uiGameCrtl.gameform.rate.$invalid"> Rate
+            Must be between 1 -5 </span>
+      </div>
+      <div class="form-group">
+         <label>minPlayers</label>
+         <input type="text" name="minPlayers" class="form-control" ng-model="minPlayers" required pattern="^[2-10]{1}$*"
+            ng-minlength="1" ng-maxlength="10">
+         <span style="color: red;"
+            ng-show="uiGameCrtl.gameform.minPlayers.$dirty && uiGameCrtl.gameform.minPlayers.$invalid">
+            {{uiGameCrtl.gameform.minPlayers }}MinPlayer Must be between 1 -10 </span>
+      </div>
+
+      <div class="form-group">
+         <label>Max Players</label>
+         <input type="text" name="maxPlayers" class="form-control" ng-model="maxPlayers" 
+       >
+         <span style="color: red;"
+            ng-show="uiGameCrtl.gameform.maxPlayers.$dirty && uiGameCrtl.gameform.maxPlayers.$invalid"> MaxPlayer Must
+            be between 1 -10 </span>
+      </div>
+
+      <div class="form-group">
+         <label>Designer</label>
+         <input type="text" name="designer" class="form-control" ng-model="designer">
+         <span style="color: red;"
+            ng-show="uiGameCrtl.gameform.designer.$dirty && uiGameCrtl.gameform.designer.$invalid">Designer is Required
+         </span>
+      </div>
+
+      <!-- SUBMIT BUTTON -->
+
+      <button type="submit" class="btn btn-primary" ng-disabled="gameform.$invalid">Submit</button>
+
+   </form>
+
+</div><!-- col-sm-8 -->

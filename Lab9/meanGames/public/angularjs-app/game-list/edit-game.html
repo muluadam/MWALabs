@@ -1,0 +1,103 @@
+ 
+ 
+
+<div style="padding: 30px;">
+    <h>{{uiGameCrtl.oneGame}}</h>
+   <h2 style="color:rgb(12, 92, 23)"> Title: {{uiGameCrtl.oneGame.title}}</h2> 
+    <h6 style="color:blue">Price: {{uiGameCrtl.oneGame.price}}</h6> 
+    <h6 style="color:blue">minPlayers: {{uiGameCrtl.oneGame.minPlayers}}</h6> 
+    <h6 style="color:blue">maxPlayers: {{uiGameCrtl.oneGame.maxPlayers}}</h6>
+   des {{uiGameCrtl.oneGame.designers}}
+    <h6 style="color:blue">Rating:  <span ng-repeat="star in  uiGameCrtl.rating track by $index " >&#9733;</span>{{title}}</h6><br/>
+   
+    <h6 style="color:blue"> 
+         <game-rating  stars="uiGameCrtl.rating">
+
+    </game-rating> </h6><br/>
+   
+</div>
+
+
+<div class="col-sm-8 col-sm-offset-2" style="width: 300px;">
+
+ 
+     <div class="page-header">
+        <h1>Add New Game</h1>
+     </div>   
+     <form name="uiGameCrtl.oneGame" ng-submit="uiGameCrtl.saveForm(this)" novalidate>
+        <div class="form-group">
+           <label>Title {{uiGameCrtl.oneGame.title}}</label> 
+           <input type="text" name="uiGameCrtl.oneGame.title"   
+           value="{{uiGameCrtl.oneGame.title}}" 
+            class="form-control" 
+            ng-model="uiGameCrtl.oneGame.title"
+            required  
+            ng-maxlength="50" />
+           <span style="color: red;"
+              ng-show="uiGameCrtl.oneGame.title.$dirty 
+              &&
+               uiGameCrtl.oneGame.title.$invalid">Invalid Title</span>
+        </div>
+  
+        <!-- USERNAME -->
+        <div class="form-group">
+           <label>Price</label>
+           <input type="text" name="uiGameCrtl.oneGame.price" 
+           value="{{uiGameCrtl.oneGame.price}}"
+           class="form-control" 
+           ng-model="uiGameCrtl.oneGame.price"
+            required pattern="\d*">
+           <span style="color: red;" ng-show="uiGameCrtl.oneGame.price.$dirty && uiGameCrtl.oneGame.price.$invalid">
+              Invalid Price </span>
+        </div>
+  
+        <!-- EMAIL -->
+        <div class="form-group">
+           <label>Year</label>
+           <input type="text" name="uiGameCrtl.oneGame.year" value="{{uiGameCrtl.oneGame.year}}" class="form-control" ng-model="uiGameCrtl.oneGame.year" pattern="^[0-9]{4}$">
+           <span style="color: red;" ng-show="uiGameCrtl.oneGame.year.$dirty && uiGameCrtl.oneGame.year.$invalid">
+              Invalid Year</span>
+        </div>
+        <div class="form-group">
+           <label>Rate</label>
+           <input type="text" name="rate" class="form-control" ng-model="uiGameCrtl.oneGame.rate" pattern="^[1-5]{1}$">
+           <span style="color: red;" ng-show="uiGameCrtl.oneGame.rate.$dirty && uiGameCrtl.oneGame.rate.$invalid"> Rate
+              Must be between 1 -5 </span>
+        </div>
+        <div class="form-group">
+           <label>minPlayers</label>
+           <input type="text" name="uiGameCrtl.oneGame.minPlayers" class="form-control" value="uiGameCrtl.oneGame.minPlayers " ng-model="uiGameCrtl.oneGame.minPlayers" required pattern="^[2-10]{1}$*"
+              ng-minlength="1" ng-maxlength="10">
+           <span style="color: red;"
+              ng-show="uiGameCrtl.oneGame.minPlayers.$dirty && uiGameCrtl.oneGame.minPlayers.$invalid">
+              MinPlayer Must be between 1 -10 </span>
+        </div>
+  
+        <div class="form-group">
+           <label>Max Players</label>
+           <input type="text" name="uiGameCrtl.oneGame.maxPlayers" value="uiGameCrtl.oneGame.maxPlayers" class="form-control" ng-model="uiGameCrtl.oneGame.maxPlayers" 
+           pattern="^[1-9]{1,2,3}$"
+            ng-minlength="1"
+              ng-maxlength="10">
+           <span style="color: red;"
+              ng-show="uiGameCrtl.oneGame.maxPlayers.$dirty && uiGameCrtl.oneGame.maxPlayers.$invalid"> MaxPlayer Must
+              be between 1 -10 </span>
+        </div>
+  
+        <div class="form-group">
+           <label>Designer</label>
+           <input type="text" name="designer"  value="{{uiGameCrtl.oneGame.designers}}" 
+           class="form-control"
+            ng-model="uiGameCrtl.oneGame.designers">
+           <span style="color: red;"
+              ng-show="oneGame.designer.$dirty && uiGameCrtl.oneGame.designer.$invalid">Designer is Required
+           </span>
+        </div>
+  
+     
+  
+        <button type="submit" class="btn btn-primary"  >Submit</button>
+  
+     </form>
+  
+  </div><!-- col-sm-8 -->

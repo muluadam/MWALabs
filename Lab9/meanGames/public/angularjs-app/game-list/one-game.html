@@ -1,0 +1,19 @@
+ 
+ 
+
+<div style="padding: 30px;">
+    
+   <h2 style="color:rgb(12, 92, 23)"> Title: {{uiGameCrtl.data.title}}</h2> 
+    <h6 style="color:blue">Price: {{uiGameCrtl.data.price}}</h6> 
+    <h6 style="color:blue">minPlayers: {{uiGameCrtl.data.minPlayers}}</h6> 
+    <h6 style="color:blue">maxPlayers: {{uiGameCrtl.data.maxPlayers}}</h6>
+    
+    <h6 style="color:blue">Rating:  <span ng-repeat="star in  uiGameCrtl.rating track by $index " >&#9733;</span>{{title}}</h6><br/>
+   
+    <h6 style="color:blue"> 
+         <game-rating  stars="uiGameCrtl.rating">
+
+    </game-rating> </h6><br/>
+   
+</div>
+

@@ -1,0 +1,21 @@
+{
+  "name": "Lab5_part3_review",
+  "version": "1.0.0",
+  "description": "Lab 5 Day 5 , MWA",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Muluadam T Akalu",
+  "license": "ISC",
+  "dependencies": {
+    "angular": "^1.8.2",
+    "angular-jwt": "^0.1.11",
+    "angular-route": "^1.8.2",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "jwt-helper": "^0.1.0",
+    "mongoose": "^5.13.3"
+  }
+}
