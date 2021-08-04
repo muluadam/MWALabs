@@ -1,0 +1,47 @@
+
+ 
+ <div class="col-sm-8 col-sm-offset-2" style="width: 300px;">
+ 
+  
+    <div class="page-header">
+       <h1>Register </h1>
+    </div>   
+    <form name="uiGameCrtl.gameform" ng-submit="uiGameCrtl.submitForm(this)" novalidate>
+       
+      
+       <div class="form-group">
+          <label>User Name</label>
+          <input type="text" name="username" class="form-control" ng-model="username" required  
+             ng-maxlength="50">
+        </div>
+ 
+       <!-- USERNAME -->
+       <div class="form-group">
+          <label>Name</label>
+          <input type="text" name="name" class="form-control" ng-model="name" required pattern="\d*">
+        
+       </div>
+ 
+       <!-- EMAIL -->
+       <div class="form-group">
+          <label>password</label>
+          <input type="text" name="password" class="form-control" ng-model="password" pattern="^[0-9]{4}$">
+        
+       </div>
+       <div class="form-group">
+          <label>Re type Password</label>
+          <input type="password" name="rate" class="form-control" ng-model="password" pattern="^[1-5]{1}$">
+       
+       </div>
+        
+   
+        
+      
+ 
+       <!-- SUBMIT BUTTON -->
+ 
+       <button type="submit" class="btn btn-primary" ng-disabled="gameform.$invalid">Submit</button>
+ 
+    </form>
+ 
+ </div><!-- col-sm-8 -->

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="meanGamesApp">
+
+<head>
+    <meta charset="UTF-8">
+ 
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mean Application </title>
+    <link rel="stylesheet" href="./CSS/bootstrap.min.css" />
+    <link rel="stylesheet" href="./CSS/custom.css" />
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css"> 
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css"> 
+<script >
+    $(document).ready(function() {
+    $('#table').DataTable();
+} );
+</script>
+</head>
+
+<body>
+    <header class="header">
+        <h1>Mean Game Demo Angular Js App</h1>
+
+
+
+
+
+    </header>
+    <div class="content">
+
+
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="/">All Games</a>
+                <button class="navbar-toggler" type="button" 
+                data-bs-toggle="collapse" data-bs-target="#navbarColor02"
+                    aria-controls="navbarColor02"
+                     aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarColor02">
+                    <ul class="navbar-nav me-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/#!/allusers">All Users</a>
+                        </li>
+                        
+                        <li class="nav-item">
+                            <a class="nav-link" href="/#!/login">Login</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/#!/register">Register</a>
+                        </li>
+                         
+                    </ul>
+                   
+                </div>
+            </div>
+        </nav>
+
+        <div ng-view>
+{{ gameCrtl.allGames}}
+
+        </div>
+       
+    </div>
+  
+
+
+    <script src="node_modules/angular/angular.js"></script>
+    <script src="node_modules/angular-route/angular-route.js"></script>
+
+    <script src="angularjs-app/app.js"></script>
+ 
+
+    <script src="angularjs-app/controller/ui.game.controller.js"></script>
+    <script src="angularjs-app/controller/user.controller.js" ></script>
+ 
+ 
+
+    <script src="angularjs-app/dataFactory/dataFactory.js"></script>
+    <script src="angularjs-app/dataFactory/userDataFactory.js" ></script>
+
+
+    <!--  for Ratings -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+ 
+
+</body>
+
+</html>

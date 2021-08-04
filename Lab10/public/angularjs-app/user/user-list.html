@@ -1,0 +1,23 @@
+<table id="table" class="table display    " style="width:50%">
+    <thead>
+       <tr class="table-primary">
+          <td scope="col">Title</td>
+          <td scope="col">Price</td>
+          <td scope="col"> Edit</td>
+          <td scope="col"> Update</td>
+          <td scope="col"> Delete</td>
+       </tr>
+    </thead>
+    <tbody>
+ 
+       <tr class="   bg-dark" ng-repeat="game in uiGameCrtl.games |orderBy:'title'">
+          <th scope="row">1</th>
+          <td>{{game.title}}</td>
+          <td>{{game.price | currency}}</td>
+          <td> <a href="/#!/game/{{game._id}}">View Detail</a> </td>
+          <td> <a href="/#!/game/edit/{{game._id}}">Edit</a> </td>
+          <td> <a href="/#!/game/delete/{{game._id}}">Delete</a> </td>
+       </tr>
+    </tbody>
+ </table>
+ 

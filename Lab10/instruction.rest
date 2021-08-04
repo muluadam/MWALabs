@@ -1,0 +1,17 @@
+
+
+
+
+
+GET  http://localhost:3001/api/game/  HTTP/1.1
+
+
+ 
+GET  http://localhost:3001/api/
+
+
+PATCH  http://localhost:3001/api/game/5fbed15c07a5894b456a4339
+    {
+        title:"onitoma Upgrade"
+    }
+   
