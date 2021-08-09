@@ -72,8 +72,8 @@ User.findOne({username}).exec(function(err,user){
         return res.status(500).send(response.message);
     }
     if (!user) {
-        response.message = "User not Found"
-        return res.status(404).send(response.message);
+        response.message = "User not Authorized"
+        return res.status(401).send(response.message);
     }
     if(user){
         usr.name=user.name;

@@ -46,11 +46,15 @@
                             <a class="nav-link" href="/#!/allusers">All Users</a>
                         </li>
                         
-                        <li class="nav-item">
+                        <li class="nav-item" ng-hide='{{userCrtl.loggedUser!==""}}'>
                             <a class="nav-link" href="/#!/login">Login</a>
                         </li>
-                        <li class="nav-item">
+                        
+                        <li class="nav-item"  ng-show='{{userCrtl.loggedUser!==""}}'>
                             <a class="nav-link" href="/#!/register">Register</a>
+                        </li>
+                        <li class="nav-item"  ng-show='{{userCrtl.loggedUser!==""}}'>
+                            <a class="nav-link" href="/">Welcome {{userCrtl.loggedUser }}</a>
                         </li>
                          
                     </ul>
@@ -58,7 +62,7 @@
                 </div>
             </div>
         </nav>
-
+{{$window.sessionStorage.loggedUser}}
         <div ng-view>
 {{ gameCrtl.allGames}}
 
@@ -73,14 +77,14 @@
 
     <script src="angularjs-app/app.js"></script>
  
+    <script src="angularjs-app/dataFactory/dataFactory.js"></script>
+    <script src="angularjs-app/dataFactory/userDataFactory.js" ></script>
 
     <script src="angularjs-app/controller/ui.game.controller.js"></script>
     <script src="angularjs-app/controller/user.controller.js" ></script>
  
  
 
-    <script src="angularjs-app/dataFactory/dataFactory.js"></script>
-    <script src="angularjs-app/dataFactory/userDataFactory.js" ></script>
 
 
     <!--  for Ratings -->

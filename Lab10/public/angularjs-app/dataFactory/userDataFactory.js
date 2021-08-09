@@ -1,19 +1,18 @@
 angular.module("meanGamesApp").factory("UserDataFactory", UserDataFactory);
-const log = console.log;
  
 const API = "http://localhost:3002/api/game/"
  
-function UserDataFactory($http, $routeParams) {
+function UserDataFactory($http) {
 
     return {
         login: login,
         register: register
     }
     function register() {
-        log("Register")
+        console.log("Register")
     }
-    function login() {
-        log("login")
+    function login(cred) {
+        return $http.post('/api/user/login', cred).then(complete).catch(failure);
     }
     function complete(response) {
         console.log("res", response);
